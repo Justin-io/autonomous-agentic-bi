@@ -1,0 +1,241 @@
+{
+  "project": "Autonomous Agentic BI & Conversational Analytics Platform",
+  "version": "1.0.0",
+  "last_updated": "2026-10-06T06:21:00Z",
+  "current_iteration": 1,
+  "epics": [
+    {
+      "id": "EPIC-1",
+      "name": "Enterprise Synthetic Data Warehouse & Benchmark Scenarios",
+      "description": "Multi-table relational schema (orders, customers, products, geography, order_items, marketing) with calibrated scenarios (Kerala Q2 product churn, regional pricing).",
+      "tasks": [
+        {
+          "id": "TASK-101",
+          "title": "Enterprise Data Warehouse Generator",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Generates 8 relational tables (customers, products, geography, orders, order_items, churn_events, marketing_campaigns, calendar_dim)",
+            "Calibrated scenario: Kerala state experienced a significant Q2 customer churn concentrated in specific product categories",
+            "Outputs clean DuckDB and PostgreSQL compatible datasets with foreign key integrity"
+          ],
+          "dependencies": []
+        }
+      ]
+    },
+    {
+      "id": "EPIC-2",
+      "name": "Canonical Semantic Layer & Governance",
+      "description": "Entities, metrics, dimensions, grain, allowable join paths, and fanout guards.",
+      "tasks": [
+        {
+          "id": "TASK-201",
+          "title": "Semantic Layer Catalog & Join Graph",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Pydantic schemas for Entity, Metric, Dimension, Relationship, and JoinGraph",
+            "Canonical metrics: churn_rate, customer_loss_count, net_revenue, average_order_value",
+            "Strict allowable join validation preventing join fanout"
+          ],
+          "dependencies": ["TASK-101"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-3",
+      "name": "Multi-Engine Database Connectors",
+      "description": "DuckDB and PostgreSQL connectors with read-only enforcement, execution timeouts, and row limits.",
+      "tasks": [
+        {
+          "id": "TASK-301",
+          "title": "Database Connectors & Read-Only Safety",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "DuckDB columnar engine and PostgreSQL connector",
+            "Strict read-only query execution rejecting mutating operations",
+            "SHA-256 result hashing for evidence lineage"
+          ],
+          "dependencies": ["TASK-101"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-4",
+      "name": "SQL Generator, AST Validator & Cost Optimizer",
+      "description": "sqlglot AST parser, grounded SQL generator, mutating statement blocker, and EXPLAIN cost estimator.",
+      "tasks": [
+        {
+          "id": "TASK-401",
+          "title": "SQL AST Validator & Grounded Generator",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "sqlglot AST parsing blocking DROP, DELETE, UPDATE, INSERT, ALTER",
+            "Catalog schema cross-referencing and alias resolution",
+            "Grounded query builder mapping semantic metrics to safe SQL",
+            "EXPLAIN plan cost estimation and query caching"
+          ],
+          "dependencies": ["TASK-201", "TASK-301"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-5",
+      "name": "Statistical Profiling & Multi-Dimensional Segmentation",
+      "description": "Data profiling, inferential stats (t-test, Cohen's d), and shift-share contribution analysis.",
+      "tasks": [
+        {
+          "id": "TASK-501",
+          "title": "Inferential Statistics & Shift-Share Segmentation",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Dataset profiler (null rates, cardinalities, distribution moments)",
+            "Welch t-test, Mann-Whitney U, Cohen's d effect size, 95% CIs",
+            "Multi-dimensional shift-share contribution analysis isolating Kerala product churn"
+          ],
+          "dependencies": ["TASK-301"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-6",
+      "name": "Counterargument Agent & Evidence-Sufficiency Gate",
+      "description": "Independent Critic auditing for Simpson's paradox, confounding, sample size, and explicit refusal.",
+      "tasks": [
+        {
+          "id": "TASK-601",
+          "title": "Critic Agent & Evidence-Sufficiency Gate",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Audits for Simpson's paradox, denominator drift, and sample size power",
+            "Explicit evidence-sufficiency gate refusing ungrounded claims",
+            "Refusal formatted as a successful diagnostic state with required data specifications"
+          ],
+          "dependencies": ["TASK-501"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-7",
+      "name": "Evidence Store & Calibrated Claim Verification",
+      "description": "Immutable SHA-256 evidence records, calibrated multi-factor confidence, and regex claim verifier.",
+      "tasks": [
+        {
+          "id": "TASK-701",
+          "title": "Cryptographic Evidence Store & Verifier",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Immutable evidence objects with dataset hash and query definition",
+            "Multi-factor calibrated confidence scoring (0.0 to 1.0)",
+            "Deterministic citation verifier ensuring every number has an [EVD-...] citation"
+          ],
+          "dependencies": ["TASK-601"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-8",
+      "name": "Deterministic Plotly Visualizations & HITL Subsystem",
+      "description": "Plotly chart specifications (waterfall, time-series anomaly, regional bars) and human review checkpoints.",
+      "tasks": [
+        {
+          "id": "TASK-801",
+          "title": "Visuals Generator & HITL Review Manager",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Plotly waterfall chart, time-series anomaly, and regional product churn bar specs",
+            "HITL checkpoint evaluating review triggers for high-impact recommendations",
+            "Structured review packet generation and approval/rejection handling"
+          ],
+          "dependencies": ["TASK-701"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-9",
+      "name": "16-Stage Pipeline & Conversational Multi-Turn Drill-Down",
+      "description": "Closed-loop 16-stage pipeline and recursive 'Why?' and 'What should we do?' drill-downs.",
+      "tasks": [
+        {
+          "id": "TASK-901",
+          "title": "16-Stage Orchestrator & Conversational Drill-Down",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Executes full 16-stage pipeline from QUESTION to EVIDENCE_BACKED_ANSWER",
+            "Recursive 'Why?' diagnostic driver decomposition",
+            "Prescriptive 'What should we do?' counterfactual intervention evaluation"
+          ],
+          "dependencies": ["TASK-401", "TASK-801"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-10",
+      "name": "Evaluation Framework & Canonical Benchmark Suite",
+      "description": "Comprehensive benchmark evaluation harness testing SQL accuracy, grounding, citations, and refusal.",
+      "tasks": [
+        {
+          "id": "TASK-1001",
+          "title": "Evaluation Harness & Benchmark Scenarios",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Canonical business benchmarks: BQ-1 (Kerala Q2 product churn), BQ-2 (Why drilldown), BQ-3 (Intervention), BQ-4 (Refusal)",
+            "Scoring harness measuring SQL correctness, citation precision, and task success"
+          ],
+          "dependencies": ["TASK-901"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-11",
+      "name": "FastAPI Web Service & Real-Time SSE Streaming",
+      "description": "REST endpoints for conversational chat, SSE event telemetry, catalog introspection, and HITL approvals.",
+      "tasks": [
+        {
+          "id": "TASK-1101",
+          "title": "FastAPI Service & SSE Telemetry Stream",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Endpoints for chat queries, SSE event stream, session state, and HITL decision submission",
+            "Pydantic v2 schemas and structured error handling"
+          ],
+          "dependencies": ["TASK-1001"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-12",
+      "name": "React + TypeScript Agentic BI Workspace",
+      "description": "Power BI-style analytics workspace with ChatGPT-style conversational assistant, Plotly charts, and HITL modal.",
+      "tasks": [
+        {
+          "id": "TASK-1201",
+          "title": "React + TypeScript Workspace Frontend",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Interactive dashboard with chat input, preset questions (Kerala Q2, Why, What next)",
+            "16-stage visual pipeline stepper and live SSE telemetry updates",
+            "Interactive Plotly charts, evidence citation popovers, and HITL approval modal"
+          ],
+          "dependencies": ["TASK-1101"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-13",
+      "name": "Packaging, Docker & AWS Production Deployment Guide",
+      "description": "Multi-stage Dockerfile, docker-compose.yml, Makefile, and enterprise AWS deployment guide.",
+      "tasks": [
+        {
+          "id": "TASK-1301",
+          "title": "Docker Setup & AWS Cloud Deployment Guide",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Multi-stage Dockerfile and docker-compose.yml",
+            "Comprehensive AWS production deployment guide (ECS, RDS, S3)",
+            "All unit and end-to-end tests passing"
+          ],
+          "dependencies": ["TASK-1201"]
+        }
+      ]
+    }
+  ]
+}
