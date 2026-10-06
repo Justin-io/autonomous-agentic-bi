@@ -1,8 +1,8 @@
 {
   "project": "Autonomous Agentic BI & Conversational Analytics Platform",
   "version": "1.0.0",
-  "last_updated": "2026-10-06T06:21:00Z",
-  "current_iteration": 1,
+  "last_updated": "2026-10-06T06:50:00Z",
+  "current_iteration": 2,
   "epics": [
     {
       "id": "EPIC-1",
@@ -12,7 +12,7 @@
         {
           "id": "TASK-101",
           "title": "Enterprise Data Warehouse Generator",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Generates 8 relational tables (customers, products, geography, orders, order_items, churn_events, marketing_campaigns, calendar_dim)",
             "Calibrated scenario: Kerala state experienced a significant Q2 customer churn concentrated in specific product categories",
@@ -30,7 +30,7 @@
         {
           "id": "TASK-201",
           "title": "Semantic Layer Catalog & Join Graph",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Pydantic schemas for Entity, Metric, Dimension, Relationship, and JoinGraph",
             "Canonical metrics: churn_rate, customer_loss_count, net_revenue, average_order_value",
@@ -48,7 +48,7 @@
         {
           "id": "TASK-301",
           "title": "Database Connectors & Read-Only Safety",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "DuckDB columnar engine and PostgreSQL connector",
             "Strict read-only query execution rejecting mutating operations",
@@ -66,7 +66,7 @@
         {
           "id": "TASK-401",
           "title": "SQL AST Validator & Grounded Generator",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "sqlglot AST parsing blocking DROP, DELETE, UPDATE, INSERT, ALTER",
             "Catalog schema cross-referencing and alias resolution",
@@ -85,7 +85,7 @@
         {
           "id": "TASK-501",
           "title": "Inferential Statistics & Shift-Share Segmentation",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Dataset profiler (null rates, cardinalities, distribution moments)",
             "Welch t-test, Mann-Whitney U, Cohen's d effect size, 95% CIs",
@@ -103,7 +103,7 @@
         {
           "id": "TASK-601",
           "title": "Critic Agent & Evidence-Sufficiency Gate",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Audits for Simpson's paradox, denominator drift, and sample size power",
             "Explicit evidence-sufficiency gate refusing ungrounded claims",
@@ -121,7 +121,7 @@
         {
           "id": "TASK-701",
           "title": "Cryptographic Evidence Store & Verifier",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Immutable evidence objects with dataset hash and query definition",
             "Multi-factor calibrated confidence scoring (0.0 to 1.0)",
@@ -139,7 +139,7 @@
         {
           "id": "TASK-801",
           "title": "Visuals Generator & HITL Review Manager",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Plotly waterfall chart, time-series anomaly, and regional product churn bar specs",
             "HITL checkpoint evaluating review triggers for high-impact recommendations",
@@ -157,7 +157,7 @@
         {
           "id": "TASK-901",
           "title": "16-Stage Orchestrator & Conversational Drill-Down",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Executes full 16-stage pipeline from QUESTION to EVIDENCE_BACKED_ANSWER",
             "Recursive 'Why?' diagnostic driver decomposition",
@@ -175,7 +175,7 @@
         {
           "id": "TASK-1001",
           "title": "Evaluation Harness & Benchmark Scenarios",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Canonical business benchmarks: BQ-1 (Kerala Q2 product churn), BQ-2 (Why drilldown), BQ-3 (Intervention), BQ-4 (Refusal)",
             "Scoring harness measuring SQL correctness, citation precision, and task success"
@@ -192,7 +192,7 @@
         {
           "id": "TASK-1101",
           "title": "FastAPI Service & SSE Telemetry Stream",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Endpoints for chat queries, SSE event stream, session state, and HITL decision submission",
             "Pydantic v2 schemas and structured error handling"
@@ -209,7 +209,7 @@
         {
           "id": "TASK-1201",
           "title": "React + TypeScript Workspace Frontend",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Interactive dashboard with chat input, preset questions (Kerala Q2, Why, What next)",
             "16-stage visual pipeline stepper and live SSE telemetry updates",
@@ -227,7 +227,7 @@
         {
           "id": "TASK-1301",
           "title": "Docker Setup & AWS Cloud Deployment Guide",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Multi-stage Dockerfile and docker-compose.yml",
             "Comprehensive AWS production deployment guide (ECS, RDS, S3)",
